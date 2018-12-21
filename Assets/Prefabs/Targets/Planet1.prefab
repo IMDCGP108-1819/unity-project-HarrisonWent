@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61895293225581180}
   - component: {fileID: 50803091999106482}
   - component: {fileID: 114282048452412072}
+  - component: {fileID: 114568835674818282}
+  - component: {fileID: 95333921989156690}
   m_Layer: 0
   m_Name: Planet1
   m_TagString: Planet
@@ -88,6 +90,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0.29
+--- !u!95 &95333921989156690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717006742096650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72efe80e850822c46bc03e9b3293bc50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114282048452412072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,9 +119,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b8245dc9107454895711b08c7614de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosion: {fileID: 21300000, guid: df7945e308fab9240a1d54fd75b6b6e1, type: 3}
   Explos1: {fileID: 1371714072264562, guid: b36e32d5b570e284e8d0970952edf017, type: 2}
   Explos2: {fileID: 1474864253445956, guid: 2ad77772c7eddfc4aab15230a759f563, type: 2}
+--- !u!114 &114568835674818282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717006742096650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b077f9f601b5b1459138c37b47ea855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.33
 --- !u!212 &212359125182870886
 SpriteRenderer:
   m_ObjectHideFlags: 1

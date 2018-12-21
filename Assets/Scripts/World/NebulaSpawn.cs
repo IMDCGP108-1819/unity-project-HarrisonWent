@@ -6,6 +6,7 @@ public class NebulaSpawn : MonoBehaviour {
 
     public GameObject[] Nebula;
     public int countToSpawn = 10;
+    public int MaxStarDistanceXY = 25;
 	public List<GameObject> CurrentObjects;
 	public Sprite[] LaunchOptions;
 	public SpriteRenderer LaunchPlanetObject;
@@ -25,7 +26,7 @@ public class NebulaSpawn : MonoBehaviour {
 
         for (int count = 0; count < countToSpawn; count++)
         {
-            Vector3 RandomPosition = new Vector3(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10), Random.Range(-1.0f, 1.0f));
+            Vector3 RandomPosition = new Vector3(Random.Range(transform.position.x - MaxStarDistanceXY, transform.position.x + MaxStarDistanceXY), Random.Range(transform.position.y - MaxStarDistanceXY, transform.position.y + MaxStarDistanceXY), Random.Range(-2.0f, -1.0f));
             Quaternion RandomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 			CurrentObjects.Add(GameObject.Instantiate(Nebula[Random.Range(0, Nebula.Length)], RandomPosition, RandomRotation));
             float a = Random.Range(1.00f, 100.00f);

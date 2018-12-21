@@ -15,6 +15,10 @@ public class Aim : MonoBehaviour {
     private void Start()
     {
         rendForCurve = GetComponent<LineRenderer>();
+        if (GameManager.Difficulty == 2)
+        {
+            rendForCurve.enabled = false;
+        }
         LastPosition = transform.localPosition;
     }
 
@@ -40,8 +44,18 @@ public class Aim : MonoBehaviour {
 
     private void DrawCurve()
     {
-
-        int verts = 10;
+        int verts = 0;
+        switch(GameManager.Difficulty)
+        {
+            case 0:
+                verts = 20;
+                break;
+            case 1:
+                verts = 10;
+                break;
+            case 2:
+                return;
+        }
 
         rendForCurve.SetVertexCount(verts);
 

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1015388688323496}
+  m_IsPrefabAsset: 1
+--- !u!1 &1015388688323496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4096212886024392}
+  - component: {fileID: 114722908635934660}
+  m_Layer: 0
+  m_Name: SkyBoxSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4096212886024392
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015388688323496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.7, y: 3.39, z: -3.9453125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114722908635934660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015388688323496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e7569d26052a546bfe3c197cea3823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Nebula:
+  - {fileID: 1504889248616204, guid: 27e89b729a8351748befd7f5ed5c8bc1, type: 2}
+  countToSpawn: 10
+  MaxStarDistanceXY: 25
+  CurrentObjects: []
+  LaunchOptions:
+  - {fileID: 21300000, guid: 0f317d862821b764aa28598d89e5f429, type: 3}
+  - {fileID: 21300000, guid: 6291b4e882594ad4fa9d8485ee7b0d9e, type: 3}
+  - {fileID: 21300000, guid: 96b01a9a418bd9a4dbfb9996e305efad, type: 3}
+  - {fileID: 21300000, guid: b1afe092a0f4e2149b3b801d104d087d, type: 3}
+  LaunchPlanetObject: {fileID: 0}

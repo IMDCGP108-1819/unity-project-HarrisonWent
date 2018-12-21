@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61743981301169580}
   - component: {fileID: 50906192732682168}
   - component: {fileID: 114073291481497048}
+  - component: {fileID: 114572408278169416}
+  - component: {fileID: 95730448428262780}
   m_Layer: 0
   m_Name: Planet2
   m_TagString: Planet
@@ -80,7 +82,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.826667, y: 6.826667}
-    newSize: {x: 5.12, y: 5.12}
+    newSize: {x: 6.826667, y: 6.826667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -88,6 +90,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0.29
+--- !u!95 &95730448428262780
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438554778302982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0901801ae85491f4fb90229cac6e4800, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114073291481497048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,9 +119,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b8245dc9107454895711b08c7614de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosion: {fileID: 21300000, guid: df7945e308fab9240a1d54fd75b6b6e1, type: 3}
   Explos1: {fileID: 1371714072264562, guid: b36e32d5b570e284e8d0970952edf017, type: 2}
   Explos2: {fileID: 1474864253445956, guid: 2ad77772c7eddfc4aab15230a759f563, type: 2}
+--- !u!114 &114572408278169416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438554778302982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b077f9f601b5b1459138c37b47ea855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.33
 --- !u!212 &212419980091390872
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -142,7 +173,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 6.826667, y: 6.826667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class Shoot : MonoBehaviour {
+
     private ActionCam BattleCam;
     public Aim AimScript;
     private bool Fire = false;
     private int Difficulty = 0;
+    private Rigidbody2D myRigid;
 
     private void Start()
     {
+        myRigid = GetComponent<Rigidbody2D>();
         BattleCam = Camera.main.GetComponent<ActionCam>();
-        Difficulty = GameObject.Find("Manager").GetComponent<GameManager>().Difficulty;
+        Difficulty = GameManager.Difficulty;
     }
 
     void Update()
@@ -21,14 +26,14 @@ public class Shoot : MonoBehaviour {
             Fire = true;
             BattleCam.actionPhase = true;
             AimScript.GetComponent<Transform>().SetParent(null);
-            GetComponent<Rigidbody2D>().gravityScale = 1f;
+            myRigid.gravityScale = 1f;
             if (Difficulty > 0)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(AimScript.VelocityX + Random.Range(0, Difficulty/10), AimScript.VelocityY + Random.Range(0, Difficulty/10));
+                myRigid.velocity = new Vector2(AimScript.VelocityX + Random.Range(0, Difficulty/10), AimScript.VelocityY + Random.Range(0, Difficulty/10));
             }
             else
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(AimScript.VelocityX, AimScript.VelocityY);
+                myRigid.velocity = new Vector2(AimScript.VelocityX, AimScript.VelocityY);
             }
         }
     }

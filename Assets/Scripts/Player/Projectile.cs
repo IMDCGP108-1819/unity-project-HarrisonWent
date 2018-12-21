@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour {
 	
-    private bool hasHit = false;
+    public bool hasHit = false;
 	public GameObject Pointer;
 	private GameManager Manager;
 	private Transform Target;
@@ -38,6 +38,7 @@ public class Projectile : MonoBehaviour {
 
 	void DetectOutOfBounds()
 	{
+        
 		if (Target == null) 
 		{
 			Target = GameObject.FindWithTag ("Planet").transform;
@@ -46,12 +47,25 @@ public class Projectile : MonoBehaviour {
 
 		if ((transform.position.x > Target.position.x || transform.position.y<Target.position.y-20) && !hasHit) 
 		{
-			Debug.Log ("GameOver");
-			MessageObject.SetActive (true);
-			MessageObject.GetComponent<Text> ().text = "GAME OVER!";
-			GameObject.Find("PlayerSpawn").GetComponent<SpawnPlayer>().Spawn(true);
+            if(SpawnPlayer.lives == 1)
+            {
+                MessageObject.SetActive(true);
+                MessageObject.GetComponent<Text>().text = "GAME OVER!";
+                Camera.main.GetComponent<ActionCam>().forcedOut = true;
+                Invoke("GameOver",2);
+            }
+            else
+            {
+                GameObject.Find("PlayerSpawn").GetComponent<SpawnPlayer>().Spawn(true);
+            }					
 
 		}
 			
 	}
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over");
+        Manager.GameOver();
+    }
 }

@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+
 public class Planet : MonoBehaviour {
 
-    public Sprite Explosion;
     public GameObject Explos1, Explos2;
 
 	public void TakeDamage()
     {
         Debug.Log("Planet target hit!");
-        GetComponent<SpriteRenderer>().sprite = Explosion;
+        GetComponent<Animator>().SetBool("Explode", true);
         if (transform.localScale.x <= 0.0f) { return; }
         StartCoroutine("TimeDown");
         StartCoroutine("Expand");
     }
 
     IEnumerator Expand()
-    {
-        SpriteRenderer MyRender = GetComponent<SpriteRenderer>();
+    {        
         float doUntil = transform.localScale.x - 0.25f;
         for (float a = transform.localScale.x; a > doUntil; a-=0.1f)
         {

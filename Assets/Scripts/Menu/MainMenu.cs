@@ -24,8 +24,12 @@ public class MainMenu : MonoBehaviour {
 		{
 			StreamReader reader = new StreamReader (Application.persistentDataPath + "\\" + path + "\\" + file);
 			string line = reader.ReadLine ();
-			GameObject.Find ("Text (Highscore)").GetComponent<Text> ().text = "HIGHSCORE: " + line;
-			reader.Close();
+			GameObject.Find ("Text (Highscore)").GetComponent<Text> ().text = "EASY HIGHSCORE: " + line;
+            line = reader.ReadLine();
+            GameObject.Find("Text (Highscore)").GetComponent<Text>().text += " | NORMAL HIGHSCORE: " + line;
+            line = reader.ReadLine();
+            GameObject.Find("Text (Highscore)").GetComponent<Text>().text += " | HARD HIGHSCORE: " + line;
+            reader.Close();
 		}
 	}
 

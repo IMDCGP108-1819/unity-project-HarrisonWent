@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61456053433378428}
   - component: {fileID: 50511690438745412}
   - component: {fileID: 114515907043788160}
+  - component: {fileID: 114738998130646364}
+  - component: {fileID: 95496090463968792}
   m_Layer: 0
   m_Name: Planet3
   m_TagString: Planet
@@ -79,7 +81,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 6.826667, y: 6.826667}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -88,6 +90,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0.29
+--- !u!95 &95496090463968792
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1864226204068140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3f460e8df8936f43ac7f9ac33be14ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114515907043788160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,9 +119,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b8245dc9107454895711b08c7614de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosion: {fileID: 21300000, guid: df7945e308fab9240a1d54fd75b6b6e1, type: 3}
   Explos1: {fileID: 1371714072264562, guid: b36e32d5b570e284e8d0970952edf017, type: 2}
   Explos2: {fileID: 1474864253445956, guid: 2ad77772c7eddfc4aab15230a759f563, type: 2}
+--- !u!114 &114738998130646364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1864226204068140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b077f9f601b5b1459138c37b47ea855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.33
 --- !u!212 &212707017876602688
 SpriteRenderer:
   m_ObjectHideFlags: 1

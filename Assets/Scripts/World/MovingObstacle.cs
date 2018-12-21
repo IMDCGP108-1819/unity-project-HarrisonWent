@@ -6,7 +6,7 @@ public class MovingObstacle : MonoBehaviour {
 
     private bool ReachedTarget = true;
     private GameObject[] Destinations;
-    private Transform Target;
+    private Vector3 Target;
 
     void Start()
     {
@@ -16,13 +16,14 @@ public class MovingObstacle : MonoBehaviour {
 	void Update () {
         if (ReachedTarget)
         {
-            Target = Destinations[Random.Range(0, Destinations.Length)].transform;
+            Transform selection = Destinations[Random.Range(0, Destinations.Length)].transform;
+            Target = new Vector3(selection.position.x, selection.position.y, Random.Range(-2.0f, 0.0f));
             ReachedTarget = false;
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, Target.position,1 * Time.deltaTime);
-            if(Vector3.Distance(transform.position, Target.position) < 1)
+            transform.position = Vector3.Lerp(transform.position, Target,1 * Time.deltaTime);
+            if(Vector3.Distance(transform.position, Target) < 1)
             {
                 ReachedTarget = true;
             }
