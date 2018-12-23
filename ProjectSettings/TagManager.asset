@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Planet
   - Movepoint
-  - Passenger
+  - Moon
   layers:
   - Default
   - TransparentFX

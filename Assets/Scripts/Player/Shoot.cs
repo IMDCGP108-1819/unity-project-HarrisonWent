@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour {
 
+    public AudioClip ExplosionSound;
     private ActionCam BattleCam;
     public Aim AimScript;
     private bool Fire = false;
@@ -23,6 +24,13 @@ public class Shoot : MonoBehaviour {
     {
         if (Input.GetAxisRaw("Fire2") > 0 && !Fire)
         {
+            Settings settingObj = GameObject.Find("CarriedOverSettings").GetComponent<Settings>();
+            settingObj.immediate = true;
+            settingObj.StartCoroutine("switchClip", settingObj.ingameAction);
+
+            GetComponent<AudioSource>().Play();
+            StartCoroutine("switchAudioClip");
+
             Fire = true;
             BattleCam.actionPhase = true;
             AimScript.GetComponent<Transform>().SetParent(null);
@@ -36,5 +44,11 @@ public class Shoot : MonoBehaviour {
                 myRigid.velocity = new Vector2(AimScript.VelocityX, AimScript.VelocityY);
             }
         }
+    }
+
+    IEnumerator switchAudioClip()
+    {
+        yield return new WaitForSeconds(GetComponent<AudioSource>().clip.length);
+        GetComponent<AudioSource>().clip = ExplosionSound;
     }
 }

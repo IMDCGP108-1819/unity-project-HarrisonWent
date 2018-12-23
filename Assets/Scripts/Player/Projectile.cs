@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class Projectile : MonoBehaviour {
 	
     public bool hasHit = false;
-	public GameObject Pointer;
+	public GameObject Pointer, particle;
 	private GameManager Manager;
 	private Transform Target;
 	public GameObject MessageObject;
+    public Text MessageText;
+    public string[] WinMessages;
 
 	void Start ()
 	{
@@ -21,16 +23,27 @@ public class Projectile : MonoBehaviour {
 	{
         if(other.tag == "Planet" && !hasHit)
 		{
+            Debug.Log("Hit planet");
+            GetComponent<AudioSource>().Play();
             hasHit = true;
-			Pointer.SetActive (false);
+            StartCoroutine(Manager.PrepareForNextWave());
+            StartCoroutine(Manager.TimeDown());
+            Pointer.SetActive (false);
             other.GetComponent<Planet>().TakeDamage();
+            MessageText.text = WinMessages[Random.Range(0, WinMessages.Length)];
 			MessageObject.SetActive (true);
-			StartCoroutine(Manager.PrepareForNextWave ());
         }
 
-        if(other.tag == "Passenger")
+        if(other.tag == "Moon")
 		{
-            other.GetComponent<PassengerShip>().TakeDamage();
+            Debug.Log("Hit moon");
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(Manager.TimeDown());
+            StartCoroutine("Expand");
+            GameObject.Instantiate(particle, transform.position, transform.rotation);
+            GetComponent<Animator>().SetBool("Explode", true);
+            GetComponent<TrailRenderer>().emitting = false;
+            other.GetComponent<ObstacleHealth>().TakeDamage();
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x / 3, GetComponent<Rigidbody2D>().velocity.y / 3);
@@ -62,6 +75,16 @@ public class Projectile : MonoBehaviour {
 		}
 			
 	}
+
+    IEnumerator Expand()
+    {
+        float doUntil = transform.localScale.x + 1f;
+        for (float a = transform.localScale.x; a < doUntil; a += 0.1f)
+        {
+            yield return null;
+            transform.localScale = new Vector3(a, a, transform.localScale.z);
+        }
+    }
 
     private void GameOver()
     {

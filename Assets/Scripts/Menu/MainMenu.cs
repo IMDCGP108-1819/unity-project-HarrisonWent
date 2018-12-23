@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public GameObject[] Menus;
+    public bool[] MenuStates;
+    public LoadingScreen loadScreen;
 	private string path = "SaveFolder";
 	private string file = "SavedData";
+
+    public string[] TutorialText;
+    public Sprite[] TutorialImages;
+    private int tutorialPageCount;
+    public Image TutorialDisplay;
+    public Text TutorialInfo;
 
 	void Start()
 	{
@@ -33,18 +40,39 @@ public class MainMenu : MonoBehaviour {
 		}
 	}
 
+    public void NextTutorialPage()
+    {
+        tutorialPageCount += 1;
+
+        if (tutorialPageCount > TutorialText.Length-1)
+        {
+            tutorialPageCount = 0;
+        }
+
+        TutorialDisplay.sprite = TutorialImages[tutorialPageCount];
+        TutorialInfo.text = TutorialText[tutorialPageCount];
+    }
+
 	public void StartGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        loadScreen.StartCoroutine("ScreenSleep");        
     }
 
     public void OpenMenu(int MenuNumber)
     {
-        CloseMenus();
-        Menus[MenuNumber].SetActive(true);
+        if (MenuStates[MenuNumber])
+        {
+            Menus[MenuNumber].SetActive(false);
+            MenuStates[MenuNumber] = false;
+        }
+        else
+        {
+            Menus[MenuNumber].SetActive(true);
+            MenuStates[MenuNumber] = true;
+        }        
     }
 
-    private void CloseMenus()
+    public void CloseMenus()
     {
         foreach (GameObject a in Menus)
         {

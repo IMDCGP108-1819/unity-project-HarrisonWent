@@ -5,25 +5,30 @@ using UnityEngine;
 public class PlanetSpawn : MonoBehaviour {
 
     public GameObject[] Planets;
-    public int countToSpawn = 1000;
+    public int countToSpawn = 1;
 	public List<GameObject> SpawnedPlanetList;
-	public bool increasePerWave, RandomiseSize;
+	public bool increasePerWave, RandomiseSize, DoubleForHardDifficulty;
+    private int sortcount = 0;
+
+    private void Start()
+    {
+        if (DoubleForHardDifficulty && GameManager.Difficulty == 2)
+        {
+            countToSpawn *= 2;
+        }
+    }
 
     public void SpawnPlanets()
     {
 
-		if (SpawnedPlanetList != null) 
+		if (!increasePerWave) 
 		{
 
 			foreach (GameObject obj in SpawnedPlanetList) 
 			{
 				Destroy (obj);
 			}
-		}
-
-		if (increasePerWave)
-		{
-			countToSpawn++;
+            sortcount = 0;
 		}
 
 		Debug.Log("Spawn planets!");
@@ -32,6 +37,8 @@ public class PlanetSpawn : MonoBehaviour {
         {
             Vector3 RandomPosition = new Vector3(Random.Range(transform.position.x - 3, transform.position.x + 3), Random.Range(transform.position.y - 5, transform.position.y + 5), 0);
 			GameObject Spawn = GameObject.Instantiate (Planets [Random.Range (0, Planets.Length)], RandomPosition, transform.rotation);
+            Spawn.GetComponent<SpriteRenderer>().sortingOrder = sortcount;
+            sortcount++;
 			SpawnedPlanetList.Add(Spawn);
             if (RandomiseSize)
             {

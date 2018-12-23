@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(SkyBoxColour))]
 
@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
 	private static int wave = 0;
 	public static int Difficulty = 0;
 
+    public AudioMixer SoundMixer;
     public Text ScoreText;
     private PlanetSpawn PlanetSpawnScript1, PlanetSpawnScript2;
     private NebulaSpawn NebulaSpawnScript;
     private SpawnPlayer PlayerSpawnScript;
+    private bool GameOverInProgress = false;
 
     void Start()
     {
@@ -72,8 +74,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (GameOverInProgress) { return; }
+        GameOverInProgress = true;
+        GameOverStats.wave = wave;
         wave = 0;
-		SceneManager.LoadSceneAsync(0);
+        GameObject.Find("CarriedOverSettings").GetComponent<LoadingScreen>().StartCoroutine("ScreenSleep");
     }
 
 	public IEnumerator PrepareForNextWave()
@@ -148,4 +153,24 @@ public class GameManager : MonoBehaviour
 		data.Close();
 
 	}
+
+    public IEnumerator TimeDown()
+    {
+
+        for (float a = 1.00f; a > 0.25f; a -= 0.05f)
+        {
+            Time.timeScale = a;
+            SoundMixer.SetFloat("MasterPitch", a);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        for (float a = 0.25f; a < 1.00f; a += 0.05f)
+        {
+            Time.timeScale = a;
+            SoundMixer.SetFloat("MasterPitch", a);
+            yield return null;
+        }
+    }
 }

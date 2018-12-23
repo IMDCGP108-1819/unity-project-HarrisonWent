@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SpawnPlayer : MonoBehaviour {
 
     private GameObject Player;
     public GameObject PlayerPrefab;
     public GameObject Life3, Life2;
-
+    public AudioMixer SoundMixer;
     public static int lives = 3;
 
     private GameManager ManagerScript;
 
     private void Start()
     {
+        lives = 3;
         ManagerScript = GameObject.Find("Manager").GetComponent<GameManager>();
     }
     
@@ -21,7 +23,10 @@ public class SpawnPlayer : MonoBehaviour {
 	{
 		if (Player != null) {
 			Destroy (Player);
-		}
+            Settings settingObj = GameObject.Find("CarriedOverSettings").GetComponent<Settings>();
+            settingObj.immediate = false;
+            settingObj.StartCoroutine("switchClip", settingObj.ingameNoAction);
+        }
 
 		if (FailedToTarget) {
 			lives -= 1;
@@ -42,12 +47,14 @@ public class SpawnPlayer : MonoBehaviour {
             Physics.gravity = new Vector3(0,Random.Range(-100f, 100f),0);
         }
 
+        Time.timeScale = 1;
 		Player = GameObject.Instantiate(PlayerPrefab, transform.position, transform.rotation);
 
         GameObject cam;
         if (cam = GameObject.Find("Main Camera"))
 		{
-			cam.GetComponent<ActionCam>().PlayerToFollow = Player.transform;
+            SoundMixer.SetFloat("MasterVolume", 0);
+            cam.GetComponent<ActionCam>().PlayerToFollow = Player.transform;
 			cam.GetComponent<ActionCam> ().actionPhase = false;
 		}
 		else

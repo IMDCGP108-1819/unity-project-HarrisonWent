@@ -15,7 +15,7 @@ public class Aim : MonoBehaviour {
     private void Start()
     {
         rendForCurve = GetComponent<LineRenderer>();
-        if (GameManager.Difficulty == 2)
+        if (GameManager.Difficulty > 0)
         {
             rendForCurve.enabled = false;
         }

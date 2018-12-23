@@ -10,10 +10,8 @@ public class Planet : MonoBehaviour {
 
 	public void TakeDamage()
     {
-        Debug.Log("Planet target hit!");
         GetComponent<Animator>().SetBool("Explode", true);
         if (transform.localScale.x <= 0.0f) { return; }
-        StartCoroutine("TimeDown");
         StartCoroutine("Expand");
     }
 
@@ -27,23 +25,5 @@ public class Planet : MonoBehaviour {
             GameObject.Instantiate(Explos2, transform.position, transform.rotation);
             transform.localScale = new Vector3(a, a, transform.localScale.z);
         }
-    }
-
-    IEnumerator TimeDown()
-    {
-        for(float a = 1.00f; a > 0.25f; a-=0.05f)
-        {
-            Time.timeScale = a;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds (0.5f);
-
-        for (float a = 0.25f; a < 1.00f; a += 0.05f)
-        {
-            Time.timeScale = a;
-            yield return null;
-        }
-
     }
 }

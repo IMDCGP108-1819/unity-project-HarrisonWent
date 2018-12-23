@@ -58,6 +58,8 @@ GameObject:
   - component: {fileID: 114870068244470710}
   - component: {fileID: 58192034301297912}
   - component: {fileID: 114777649601852596}
+  - component: {fileID: 95468773172216922}
+  - component: {fileID: 82475489482762848}
   m_Layer: 9
   m_Name: Asteroid
   m_TagString: Untagged
@@ -213,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360057767924090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.1536283, y: -18.106638, z: 0}
+  m_LocalPosition: {x: 364.0695, y: 311.50073, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4021133499910450}
@@ -272,6 +274,120 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.256
+--- !u!82 &82475489482762848
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360057767924090}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243664077409557752, guid: fc3748f1192b9ef42bca75eae493d480,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 74a4a52e4a6aba24dac0c8cf9aadddd2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!95 &95468773172216922
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360057767924090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 324c4757f3fb00d408f6a1f27b1f4351, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96238766744438680
 TrailRenderer:
   serializedVersion: 2
@@ -311,7 +427,7 @@ TrailRenderer:
   m_Time: 1
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 20
+    widthMultiplier: 15
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -484,7 +600,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasHit: 0
   Pointer: {fileID: 1113293338459088}
+  particle: {fileID: 1474864253445956, guid: 2ad77772c7eddfc4aab15230a759f563, type: 2}
   MessageObject: {fileID: 1674285549519552}
+  MessageText: {fileID: 114406568733117340}
+  WinMessages:
+  - PLANETARY ANNHILATION!
+  - ABSOLUTE DESTRUCTION!
+  - CATASTROPHIC EVENT!
+  - GALAXY BALANCED!
+  - APOCALYPSE NOW!
 --- !u!114 &114835305548873336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -545,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7efbee0b952b8748915a1aef6f2ae5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionSound: {fileID: 8300000, guid: a02c843148dafeb4790965f69122d564, type: 3}
   AimScript: {fileID: 114835305548873336}
 --- !u!120 &120560700574124336
 LineRenderer:

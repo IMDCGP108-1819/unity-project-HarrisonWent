@@ -363,7 +363,7 @@
     <Compile Include="Assets\Scripts\World\GameManager.cs" />
     <Compile Include="Assets\Scripts\World\MovingObstacle.cs" />
     <Compile Include="Assets\Scripts\World\NebulaSpawn.cs" />
-    <Compile Include="Assets\Scripts\World\PassengerShip.cs" />
+    <Compile Include="Assets\Scripts\World\ObstacleHealth.cs" />
     <Compile Include="Assets\Scripts\World\Planet.cs" />
     <Compile Include="Assets\Scripts\World\PlanetSpawn.cs" />
     <Compile Include="Assets\Scripts\World\SkyBoxColour.cs" />

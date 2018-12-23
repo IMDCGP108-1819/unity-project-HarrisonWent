@@ -17,7 +17,7 @@ public class MovingObstacle : MonoBehaviour {
         if (ReachedTarget)
         {
             Transform selection = Destinations[Random.Range(0, Destinations.Length)].transform;
-            Target = new Vector3(selection.position.x, selection.position.y, Random.Range(-2.0f, 0.0f));
+            Target = new Vector3(selection.position.x, selection.position.y, 0.00f);
             ReachedTarget = false;
         }
         else
