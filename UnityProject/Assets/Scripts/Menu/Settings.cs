@@ -10,7 +10,7 @@ public class Settings : MonoBehaviour {
     [Header("Settings objects:")]
     public static bool SoundOn = true;
     public Dropdown DifficultyDropdown;
-
+    public static bool LimitWaves = false;
     private int DifficultySetting;
 
     [Header("Audio:")]
@@ -40,8 +40,7 @@ public class Settings : MonoBehaviour {
         else
         {
             soundMixer.SetFloat("MasterVolume", -80);
-        }
-        
+        }        
     }
 
     private void OnLevelWasLoaded(int level)
@@ -50,6 +49,7 @@ public class Settings : MonoBehaviour {
         {
             //Applies difficulty from main menu to gameplay level 
             GameManager.Difficulty = DifficultySetting;
+            GameManager.limitWaves = LimitWaves;
             Debug.Log("Difficulty: " + DifficultySetting);
 
             //Starts in game music with volume fade

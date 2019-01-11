@@ -66,7 +66,14 @@ public class MainMenu : MonoBehaviour {
     //Loads gameplay level in loadscreen script
 	public void StartGame()
     {
+        Settings.LimitWaves = true;
         loadScreen.StartCoroutine("ScreenSleep");        
+    }
+
+    public void StartEndlessGame()
+    {
+        Settings.LimitWaves = false;
+        loadScreen.StartCoroutine("ScreenSleep");
     }
 
     //Toggles given menu item on and off

@@ -22,7 +22,21 @@ public class GameOverStats : MonoBehaviour {
         if (level == 0)
         {
             ScoreScreen.SetActive(true);
-            score.text = "WAVES COMPLETED: " + (wave-1);
+            if (GameManager.limitWaves)
+            {
+                if (GameManager.wave > 1)
+                {
+                    score.text = "YOU ARE DEFEATED. YOU FAILED TO DESTROY ALL TARGETS!";
+                }
+                else
+                {
+                    score.text = "YOU WIN. THE GALAXY IS YOURS";
+                }
+            }
+            else
+            {
+                score.text = "WAVES COMPLETED: " + (wave - 1);
+            }
         }
     }
 

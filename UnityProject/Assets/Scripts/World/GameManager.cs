@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
 {
     //Used to manage the gameplay
 
-	private static int wave = 0;
+	public static int wave = 0;
 	public static int Difficulty = 0;
 
+    public static bool limitWaves = false;
     public AudioMixer SoundMixer;
     public Text ScoreText;
 
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Missing PowerUpSpawner object in scene!");
         }
 
+        if (limitWaves) { wave = 11; }
         //First wave
         NextWave();
     }
@@ -77,9 +79,23 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Next wave!");
 
-		wave++;
-		ScoreText.text = "WAVE " + wave;
-
+        if (limitWaves)
+        {
+            if (wave == 1)
+            {
+                GameOver();
+            }
+            else
+            {
+                wave--;
+                ScoreText.text = "PLANETS REMAINING: " + wave;
+            }
+        }
+        else
+        {
+            wave++;
+            ScoreText.text = "WAVE " + wave;
+        }
         
         PlanetSpawnScript1.SpawnPlanets();
         PlanetSpawnScript2.SpawnPlanets();
